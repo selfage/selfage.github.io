@@ -1,6 +1,6 @@
 # Serve a "hello world" app
 
-All source code in this tutorial can be found under [examples/hello_world/frontend](https://github.com/selfage/selfage.github.io/tree/examples/hello_world/frontend) directory. All commands in this tutorial should be executed from the root directory of your repository.
+All source code in this tutorial can be found under [examples/hello_world](https://github.com/selfage/selfage.github.io/tree/main/examples/hello_world) directory. All commands in this tutorial should be executed from the root directory of your repository.
 
 ## Design principle
 
@@ -111,8 +111,8 @@ app.use(
 );
 ```
 
-`express` sets up basic HTTP routing and `express-static-gzip` leverages pre-compressed `.gz` files. Refer to their documents for more options.
+`express` helps setup HTTP routing and `express-static-gzip` leverages pre-compressed `.gz` files. Refer to their documents for more options.
 
-`globalThis.WEB_APP_BASE_DIR` is a special global variable declared by `@selfage/web_app_base_dir`, which should be pointing to the base directory of your web app, i.e. the directory of your `entries.json` file, but not until you run `npx bundage bws -ec entries.json` (corresponds to `npx bundage bws -ec examples/hello_world/frontend/entries.json`). Only then `globalThis.WEB_APP_BASE_DIR` is populated with the correct path.
+`globalThis.WEB_APP_BASE_DIR` is a global variable declared by `@selfage/web_app_base_dir`, which should be pointing to the base directory of your web app, i.e. the directory of your `entries.json` file, but not until you run `npx bundage bws -ec entries.json` (corresponds to `npx bundage bws -ec examples/hello_world/frontend/entries.json`). Only then `globalThis.WEB_APP_BASE_DIR` is populated with the correct path (in the compiled JS code).
 
 Note the use of `bws` which stands for "build web server" instead of `bwa` which means "build web apps".
