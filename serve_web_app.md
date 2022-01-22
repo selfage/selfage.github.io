@@ -2,12 +2,6 @@
 
 All source code in this tutorial can be found under [examples/hello_world](https://github.com/selfage/selfage.github.io/tree/main/examples/hello_world) directory. All commands in this tutorial should be executed from the root directory of your repository.
 
-## Design principle
-
-@selfage packages are not designed to enable code-free web app building. Instead it antipates complicated user interactions, especially when it involves communication with backend servers.
-
-Unlike popular frameworks, such as React or Angular, code is written in TypeScript with type-safe APIs. That doesn't mean we don't use HTML and CSS. Instead, it means HTML and CSS code is generated out of TypeScript code.
-
 ## Building a simple DOM tree
 
 Let's start with a simple DOM tree to show "hello world!". You will need [@selfage/element](https://www.npmjs.com/package/@selfage/element).
