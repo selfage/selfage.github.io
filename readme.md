@@ -19,7 +19,7 @@ The following guides focus on how to use @selfage packages together with other t
 * Web app
   * [Serve a "hello world" app](/serve_web_app)
   * [Design web components](/design_web_components)
-  * [Import assets](/import_asserts)
+  * [Import assets](/import_assets)
   * [Testing]
   * [Split Prod and Dev environment]
 * Web service
