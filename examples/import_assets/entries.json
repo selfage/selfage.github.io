@@ -1,0 +1,9 @@
+{
+  "entries": [{
+    "source": "./main",
+    "output": "./index"
+  }],
+  "extraAssets": [
+    "./favicon.ico"
+  ]
+}

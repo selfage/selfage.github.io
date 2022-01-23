@@ -1,6 +1,6 @@
 # Serve a "hello world" app
 
-All source code in this tutorial can be found under [examples/hello_world](https://github.com/selfage/selfage.github.io/tree/main/examples/hello_world) directory. All commands in this tutorial should be executed from the root directory of your repository.
+Sample code for this guide can be found under [examples/hello_world](https://github.com/selfage/selfage.github.io/tree/main/examples/hello_world) directory. All commands in this guide should be executed from the root directory of your repository.
 
 ## Building a simple DOM tree
 
@@ -35,7 +35,7 @@ document.body.appendChild(
 
 Note that `E` is simply a factory, providing syntax sugar to create vanilla HTML elements.
 
-BTW, `rem` is more preferred than `px` or `em` in this tutorial. You can do more research on that as homework.
+BTW, `rem` is more preferred than `px` or `em` in this guide. You can do more research on that as homework.
 
 ## Formatting
 
