@@ -14,19 +14,17 @@ Additionally for web apps, unlike React or Angular, @selfage packages antipate c
 
 Each package has its own documentation and it's fairly standalone, i.e. it's not closely coupled with other @selfage packages. Therefore you can only use what you need from @selfage packages without worrying about introducing the entire package family.
 
-The following guides focus on how to use @selfage packages together with other tools to build your website, assuming you already have basic knowledge about HTML, CSS, JavaScript, Nodejs, NPM, and TypeScript.
+The following guides focus on how to use @selfage packages together given each topic, assuming you already have basic knowledge about HTML, CSS, JavaScript, Nodejs, NPM, and TypeScript.
 
 * Web app
   * [Serve a "hello world" app](/serve_web_app)
   * [Design web components](/design_web_components)
   * [Import assets](/import_assets)
-  * [Testing]
-  * [Split Prod and Dev environment]
+  * [Testing in browser](/testing_in_browser)
 * Web service
   * [Build a micro service]
   * [Talk to Google Cloud Datastore]
   * [Testing]
-  * [Split Prod and Dev environment]
 
 ## How to write clean code
 

@@ -16,53 +16,55 @@ class ChatHistoryComponent {
 
 `body` is then considered as being owned by this class. Though it's not like C++ that `body` will be destroyed together with the class, this class should be the only one removing its `body` from any DOM tree, if ever needed.
 
-Then add a static `create()` function as the factory method to instantiate this class, taking whatever arguments needed. And more importantly, add a static `createView()` function to be called within `create()`, which creates a DOM tree that may be modified and may accept user input.
+Then start building a DOM tree owned by this component inside its constructor.
 
 ```TypeScript
-import { E } from '@selfage/element/factory';
+import { E } from "@selfage/element/factory";
 
-class ChatHistoryComponent {
-  public constructor(public body: HTMLDivElement, private button: HTMLButtonElement, private limit: number) {}
+export class ChatHistoryComponent {
+  public body: HTMLDivElement;
+  private button: HTMLButtonElement;
 
-  public static create(value: string, limit: number): ChatHistoryComponent {
-    return new ChatHistoryComponent(...ChatHistoryComponent.createView(value), limit);
-  }
-
-  public static createView(value: string) {
+  public constructor(
+    value: string,
+    private limit: number
+  ) {
     let buttonRef = new Ref<HTMLButtonElement>();
     let body = E.div(
       {
         class: "some-body",
-        style: "display: flex; justify-content: center;"
+        style: "display: flex; justify-content: center;",
       },
       E.div(
         {
-          class: "some-text"
+          class: "some-text",
         },
         E.text(value)
       ),
-      E.buttonRef(,
+      E.buttonRef(
         buttonRef,
         {
-          class: "some-button"
+          class: "some-button",
         },
         E.text("Try click!")
       )
     );
-    return [body, buttonRef.val] as const;
+    this.button = buttonRef.val;
+  }
+
+  public static create(value: string, limit: number): ChatHistoryComponent {
+    return new ChatHistoryComponent(value, limit);
   }
 }
 ```
 
-Note the use of `as const` and the spread operator `...ChatHistoryComponent.createView()`, which saves some typing to assign return values to the constructor.
-
-Following the pattern of dependency injection, an `init()` function can be added if you need to do more than just value assignments when instantiating the class.
+If you have other operations than creating HTML elements, you can then add an `init()` function, and a `public static create()` function to call it. This pattern is called dependency injection.
 
 ```TypeScript
-class ChatHistoryComponent {
+export class ChatHistoryComponent {
   // ...
   public static create(value: string, limit: number): ChatHistoryComponent {
-    return new ChatHistoryComponent(...ChatHistoryComponent.createView(value), limit).init();
+    return new ChatHistoryComponent(value, limit).init();
   }
   //...
   public init(): this {
@@ -72,40 +74,60 @@ class ChatHistoryComponent {
 }
 ```
 
-### Mock component
-
-You might be wondering why `createView()` should be separated from `create()`. It's because we want to mock everything about the class except for its DOM tree.
-
-```TypeScript
-class ChatHistoryComponentMock {
-  public constructor() {
-    super(ChatHistoryComponent.createView("Testing value"), undefined);
-  }
-}
-```
-
-Unlike normal classes interactions, DOM trees heavily depend on their parents, not just the immediate parent, but also multiple levels of parents. So we should test DOM trees composiiton as integration tests. You can see more about creating and using mocks in the [testing tutorial].
-
 ### Compose components
 
 If you have followed the pattern above, composing components is as easy as appending their bodies to parent elements.
 
 ```TypeScript
-import { E } from '@selfage/element/factory';
+import { ChatHistoryComponent } from "./chat_history_component";
+import { E } from "@selfage/element/factory";
 
-let homeComponent = HomeComponent.create(/* ... */);
-let chatHistoryComponent = ChatHistoryComponent.create("Hello", "limit");
+export class BodyComponent {
+  public body: HTMLDivElement;
 
-document.body.appendChild(
-  E.div(
-    {
-      class: "main-container",
-    },
-    homeComponent.body,
-    chatHistoryComponent.body,
-  )
-);
+  public constructor(
+    private chatHistoryComponent: ChatHistoryComponent
+  ) {
+    this.body = E.div(
+      {
+        class: "body-conainter",
+        style: "display: flex;",
+      },
+      chatHistoryComponent.body
+    );
+  }
+
+  public static create(): BodyComponent {
+    return new BodyComponent(ChatHistoryComponent.create("Hello", "limit"));
+  }
+}
 ```
+
+A `public static create()` function is defined for hiding its real dependency from its dependants, which also follows the dependency injection pattern.
+
+### Mock component
+
+Once you start building more components, some of them will start depending on others. Typically for unit tests, you want to mock dependencies because you don't have to understand all implementation details when preparing and executing tests, especially when the dependency chain becomes so long that you cannot possibly track.
+
+However, DOM trees should not be mocked, because how HTML elements are rendered heavily depends on their parents, even multiple levels up. Think of how many CSS styles can be inherited. Therefore, in the above example, the DOM tree is created within the constructor and cannot be left out, if you create a mock class by inheritance.
+
+```TypeScript
+export class ChatHistoryComponentMock extends ChatHistoryComponent {
+  public constructor() {
+    super("Testing value", undefined);
+  }
+}
+
+export class BodyComponentMock extends BodyComponent {
+  public constructor() {
+    super(new ChatHistoryComponentMock());
+  }
+}
+```
+
+Now `new BodyComponentMock()` creates a complete DOM tree, ready for [screenshot tests](/testing_in_browser), while you have the liberty to mock other public functions of `BodyComponent`.
+
+BTW, `BodyComponentMock`'s constructor also hides its fake dependency from its dependants, just as the `public static create()` function does.
 
 ## View
 
@@ -124,8 +146,6 @@ function createHomeView(): HTMLDivElement {
   );
 }
 ```
-
-Or a `public static createView()` function as seen above when creating a component.
 
 ## Controller
 
