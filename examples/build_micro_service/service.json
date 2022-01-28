@@ -1,0 +1,58 @@
+[{
+  "message": {
+    "name": "SignInRequest",
+    "fields": [{
+      "name": "email",
+      "type": "string"
+    }, {
+      "name": "password",
+      "type": "string"
+    }]
+  }
+}, {
+  "message": {
+    "name": "SignInResponse",
+    "fields": [{
+      "name": "signedSession",
+      "type": "string"
+    }]
+  }
+}, {
+  "service": {
+    "name": "SignIn",
+    "path": "/SignIn",
+    "request": "SignInRequest",
+    "response": "SignInResponse"
+  }
+}, {
+  "message": {
+    "name": "GetChatHistoryRequest",
+    "fields": [{
+      "name": "signedSession",
+      "type": "string"
+    }, {
+      "name": "channelId",
+      "type": "string"
+    }, {
+      "name": "cursor",
+      "type": "string"
+    }]
+  }
+}, {
+  "message": {
+    "name": "GetChatHistoryResponse",
+    "fields": [{
+      "name": "chatEntries",
+      "type": "ChatEntry",
+      "isArray": true,
+      "import": "./chat_entry"
+    }]
+  }
+}, {
+  "service": {
+    "name": "GetChatHistory",
+    "path": "/GetChatHistory",
+    "request": "GetChatHistoryRequest",
+    "response": "GetChatHistoryResponse"
+  }
+}]

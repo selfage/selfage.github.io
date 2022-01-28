@@ -21,8 +21,9 @@ The following guides focus on how to use @selfage packages together given each t
   * [Design web components](/design_web_components)
   * [Import assets](/import_assets)
   * [Testing in browser](/testing_in_browser)
+  * [Track state in browser history]
 * Web service
-  * [Build a micro service]
+  * [Build a micro service](/build_micro_service)
   * [Talk to Google Cloud Datastore]
   * [Testing]
 

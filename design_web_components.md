@@ -1,6 +1,6 @@
 # Design web components
 
-Unlike React or Angular, @selfage packages don't provide any framework to create components. Instead, you will only find code patterns below, by using vanilla HTML elements.
+You will learn how to design web components by using vanilla HTML elements and code patterns. @selfage packages don't provide any framework to create components, unlike React or Angular.
 
 [@selfage/element](https://www.npmjs.com/package/@selfage/element) and [@selfage/ref](https://www.npmjs.com/package/@selfage/ref) are used in the examples to help build DOM trees more concisely and elegantly with vanilla HTML elements.
 

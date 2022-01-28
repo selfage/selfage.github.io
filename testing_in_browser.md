@@ -2,7 +2,7 @@
 
 Testing your web apps is always a pain. Compicated setup, flaky, slow to start, etc.
 
-By using [@selfage/bundler_cli](https://www.npmjs.com/package/@selfage/bundler_cli) (alternatively [@selfage/puppeteer_test_executor](https://www.npmjs.com/package/@selfage/puppeteer_test_executor)), [@selfage/test_runner](https://www.npmjs.com/package/@selfage/test_runner) and [@selfage/screenshot_test_matcher](https://www.npmjs.com/package/@selfage/screenshot_test_matcher) together, based on [Puppeteer](https://www.npmjs.com/package/puppeteer), you can cut down complicated setup with the downside that it only brings up the Chrome browser to test against.
+You will learn how to use [@selfage/bundler_cli](https://www.npmjs.com/package/@selfage/bundler_cli) (alternatively [@selfage/puppeteer_test_executor](https://www.npmjs.com/package/@selfage/puppeteer_test_executor) which is based on [Puppeteer](https://www.npmjs.com/package/puppeteer)), [@selfage/test_runner](https://www.npmjs.com/package/@selfage/test_runner) and [@selfage/screenshot_test_matcher](https://www.npmjs.com/package/@selfage/screenshot_test_matcher), to can cut down complicated setup, with the downside that it only brings up the Chrome browser to test against.
 
 Sample code for this guide can be found under [examples/testing_in_browser](https://github.com/selfage/selfage.github.io/tree/main/examples/testing_in_browser) directory.
 

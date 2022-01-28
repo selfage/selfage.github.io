@@ -1,10 +1,12 @@
 # Serve a "hello world" app
 
+You will learn how to use [@selfage/cli](https://www.npmjs.com/package/@selfage/cli), [@selfage/tsconfig](https://www.npmjs.com/package/@selfage/tsconfig), [@selfage/element](https://www.npmjs.com/package/@selfage/element), [@selfage/bundler_cli](https://www.npmjs.com/package/@selfage/bundler_cli) and [@selfage/web_app_base_dir](https://www.npmjs.com/package/@selfage/web_app_base_dir), to build a "hello world" page, bundle TypeScript source files and start a local server to serve the page.
+
 Sample code for this guide can be found under [examples/hello_world](https://github.com/selfage/selfage.github.io/tree/main/examples/hello_world) directory. All commands in this guide should be executed from the root directory of your repository.
 
 ## Building a simple DOM tree
 
-Let's start with a simple DOM tree to show "hello world!". You will need [@selfage/element](https://www.npmjs.com/package/@selfage/element).
+Let's start with a simple DOM tree to show "hello world!". [@selfage/element](https://www.npmjs.com/package/@selfage/element) is used to build a simple DOM tree.
 
 Now let's create a file as `main.ts` (corresponds to `examples/hello_world/frontend/main.ts`).
 

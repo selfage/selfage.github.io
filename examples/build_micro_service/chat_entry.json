@@ -1,0 +1,13 @@
+[{
+  "message": {
+    "name": "ChatEntry",
+    "fields": [{
+      "name": "content",
+      "type": "string"
+    }, {
+      "name": "timestamp",
+      "type": "number",
+      "comment": "in seconds"
+    }]
+  }
+}]

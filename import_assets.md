@@ -6,7 +6,7 @@ You can figure out their URLs based on their file paths and hard-code them in yo
 
 Another commonly used approach is to split web servers with asset servers. Asset servers release changes rapidly and you only use assets when their URLs become avaible. However it's not hermetic, i.e., your tests will depend on live servers.
 
-In this guide, we will use [@selfage/bundler_cli](https://www.npmjs.com/package/@selfage/bundler_cli) to generate URLs upon bundling, when code imports asssets by their relative file paths.
+In this guide, you will learn how to use [@selfage/bundler_cli](https://www.npmjs.com/package/@selfage/bundler_cli) to generate URLs upon bundling, when code imports asssets by their relative file paths.
 
 Sample code for this guide can be found under [examples/import_assets](https://github.com/selfage/selfage.github.io/tree/main/examples/import_assets) directory.
 
